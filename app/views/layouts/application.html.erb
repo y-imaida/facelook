@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Facelook</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="header-logo col-md-5 col-md-offset-1 col-xs-6">
+          <%= link_to "facelook", root_path %>
+        </div>
+        <% if user_signed_in? %>
+          <div class="text-right col-md-1 col-md-offset-3 col-xs-4">
+            <%= fa_icon "bell fw", class: "header-icon" %>
+          </div>
+          <div class="text-right col-md-1 col-xs-2">
+            <div class="dropdown">
+              <i class="header-icon fa fa-cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to 'アカウント情報変更', edit_user_registration_path %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </header>
+
+  <%= yield %>
+
+  <% unless user_signed_in? %>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <table class="table">
+              <tr>
+                <td><%= link_to 'アカウント登録', new_user_registration_path %></td>
+                <td><%= link_to 'ログイン', new_user_session_path %></td>
+                <td><%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path %></td>
+                <td><%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path %></td>
+                <td><a href="http://momentsapp.com/">Moments</a></td>
+                <td><a href="https://instagram.com/">Instagram</a></td>
+              </tr>
+              <tr>
+                <td>Facelook © 2017</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <% end %>
+</body>
+</html>
