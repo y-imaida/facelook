@@ -1,6 +1,10 @@
 // Place all the styles related to the Top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-size: 14px;
+}
+
 header {
   background-color: #3b5998;
   .header-logo {
@@ -43,6 +47,7 @@ header {
     width: 100%;
   }
 }
+
 .registration-form, .login-form {
   margin: 20px 0 20px;
   h1 {
@@ -57,16 +62,11 @@ header {
 }
 
 footer {
+  width: 100%;
   color: gray;
-  // .table {
-  //   margin: 0;
-  // }
   .table tr:nth-child(odd) td {
     border-top: none;
   }
-  // hr {
-  //   margin: 0 0 10px;
-  // }
 }
 
 .flash-msg {
