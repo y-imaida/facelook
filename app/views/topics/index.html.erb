@@ -63,26 +63,40 @@
                 <%= image_tag(topic.picture, :width => "100%")  if topic.picture? %>
               </div>
               <hr>
-            </div>
-          </div>
-          <div class="comments-panel panel panel-default">
-            <div class="panel-body">
-              <div id="comments_are_topic_<%= topic.id %>">
-                コメントを表示する領域
+              <div class="comments-link">
+                <%= link_to topic_path(topic) do %>
+                  <% fa_icon("comment-o fw lg", text: "コメントする") %>
+                <% end %>
               </div>
             </div>
           </div>
+          <% if topic.comments.length > 0 %>
+            <div class="comments-panel panel panel-default">
+              <div class="panel-body">
+                <% topic.comments.order(created_at: :asc).each do |comment| %>
+                  <% unless comment.id.nil? %>
+                    <div class="profile-image">
+                      <%= profile_img(comment.user) %>
+                    </div>
+                    <div class="comment">
+                      <strong><%= comment.user.name %></strong><br>
+                      <%= simple_format(comment.content) %>
+                      <span class="updated-time"><%= comment.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></span>
+                    </div>
+                    <br>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <div class="col-md-2 col-sm-3 col-xs-3">
         <div class="user-home-right panel panel-default">
           <div class="panel-body">
             <div>
-              <strong>友達一覧</strong>
+              <strong>友達一覧：<%= @friends.length %>人</strong>
             </div>
-            <% unless @friends.present? %>
-              現在の友達は0人です。
-            <% end %>
           </div>
         </div>
       </div>

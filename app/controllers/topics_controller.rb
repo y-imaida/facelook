@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
     @topics = Topic.where(user_id: current_user.id).order(updated_at: :desc)
@@ -12,6 +12,13 @@ class TopicsController < ApplicationController
         @friends << followed
       end
     end
+  end
+
+  def show
+    @comment = @topic.comments.build
+    @comments = @topic.comments
+
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def new

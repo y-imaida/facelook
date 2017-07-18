@@ -35,7 +35,7 @@
 }
 
 .topic-panel {
-  margin: 0px;
+  margin: 10px 0px 0px;
 }
 
 .edit-topic-links {
@@ -49,11 +49,32 @@
   }
 }
 
+.comments-link {
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 .comments-panel {
   background-color: #f6f7f9;
 }
+
 .new-and-edit-form {
   img {
     margin-bottom: 10px;
+  }
+}
+
+.comment {
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+  .updated-time {
+    color: gray;
   }
 }

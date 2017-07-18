@@ -30,13 +30,14 @@
               <br>
               <%= f.submit :class => "btn btn-block btn-primary"%>
             <% end %>
+            <br>
+            <div>
+              <%= link_to topics_path, class: "btn btn-block btn-default" do %>
+                <%= fa_icon "arrow-circle-o-left fw", text: "戻る" %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <%= link_to topics_path, class: "btn btn-block btn-default" do %>
-          <%= fa_icon "arrow-circle-o-left fw", text: "戻る" %>
-        <% end %>
       </div>
     </div>
   </div>
