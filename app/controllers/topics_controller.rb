@@ -7,11 +7,12 @@ class TopicsController < ApplicationController
     @user = current_user
 
     @friends = []
-    current_user.followed_users.each do |followed|
-      if current_user.followers.find(followed.id)
-        @friends << followed
+    current_user.followers.each do |follower|
+      if current_user.following?(follower)
+        @friends << follower
       end
     end
+    @friends.sort!
   end
 
   def show

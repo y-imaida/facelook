@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h2>ユーザー一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% @users.each do |user| %>
+        <div class="user-list-item col-md-2 col-sm-3 col-xs-6">
+          <%= link_to user_path(user.id) do %>
+            <%= profile_img(user) %><br>
+            <strong><%= user.name %></strong>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -40,7 +40,7 @@
             <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
             <br>
             <div>
-              <%= link_to topics_path, class: "btn btn-block btn-default" do %>
+              <%= link_to user_path(@topic.user), class: "btn btn-block btn-default" do %>
                 <%= fa_icon "arrow-circle-o-left fw", text: "戻る" %>
               <% end %>
             </div>

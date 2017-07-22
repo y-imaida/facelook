@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :users, only:[:index, :show]
+
+  resources :relationships, only:[:create, :destroy]
+
   root 'top#index'
 
   if Rails.env.development?

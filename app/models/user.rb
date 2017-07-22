@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def follow!(other_user)
-    relationships.find_by(followed_id: other_user.id)
+    relationships.create(followed_id: other_user.id)
   end
 
   def following?(other_user)
