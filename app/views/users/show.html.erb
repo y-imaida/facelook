@@ -24,14 +24,16 @@
         </div>
       </div>
       <div class="col-md-6 col-sm-9 col-xs-9">
-        <div class="user-home-center panel panel-default">
-          <div class="panel-body">
-            メッセージ送信のボタンを配置する（友達の場合）
+        <% if (@friends.select { |friend| friend.id == current_user.id }).present? %>
+          <div class="user-home-center panel panel-default">
+            <div class="panel-body">
+              <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary btn-block" %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
         <% unless @topics.present? %>
-          <div class="panel panel-default">
+          <div class="topic-panel panel panel-default">
             <div class="panel-body">
               現在投稿はありません。
             </div>
@@ -90,14 +92,14 @@
         <div class="user-home-right panel panel-default">
           <div class="panel-body">
             <%= link_to users_path, class: "btn btn-block btn-primary" do %>
-              <% fa_icon "users fw lg", text: "ユーザー" %>
+              <% fa_icon "users fw", text: "ユーザー" %>
             <% end %>
           </div>
         </div>
         <div class="friends-list panel panel-default">
           <div class="panel-body">
             <div>
-              <strong>友達：<%= @friends.length %>人</strong>
+              <strong>友達 <span class="badge"><%= @friends.length %></span></strong>
               <hr>
               <% @friends.each do |friend| %>
                 <div class="friends-list-item">

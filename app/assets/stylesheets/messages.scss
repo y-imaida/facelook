@@ -1,0 +1,20 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.messages-panel {
+  margin-bottom: 0px;
+}
+
+.message-form-panel {
+  background-color: #f6f7f9;
+}
+
+.message {
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+  .updated-time {
+    color: gray;
+  }
+}

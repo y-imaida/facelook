@@ -26,6 +26,10 @@ header {
     font-size: 32px;
     line-height: 56px;
     cursor: pointer;
+    #unread_count {
+      font-size: 24px;
+      margin-left: 5px;
+    }
   }
   .header-icon:hover {
     opacity: 0.7;
@@ -63,6 +67,8 @@ header {
 
 footer {
   width: 100%;
+  height: 100vh;
+  background-color: white;
   color: gray;
   .table tr:nth-child(odd) td {
     border-top: none;
@@ -73,4 +79,8 @@ footer {
   // width: 50%;
   text-align: center;
   margin: 20px auto;
+}
+
+body {
+  background-color: #e9ebee;
 }

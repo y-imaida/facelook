@@ -7,12 +7,16 @@ class TopicsController < ApplicationController
     @user = current_user
 
     @friends = []
+    @friend_request_user = []
     current_user.followers.each do |follower|
       if current_user.following?(follower)
         @friends << follower
+      else
+        @friend_request_user << follower
       end
     end
     @friends.sort!
+    @friend_request_user.sort!
   end
 
   def show

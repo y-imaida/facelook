@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render :index }
 
-        # Comment.send_notice(@comment, current_user.id)
+        Comment.send_notice(@comment, current_user.id)
       end
     end
   end

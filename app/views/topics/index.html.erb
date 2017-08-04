@@ -27,7 +27,7 @@
         <div class="user-home-center panel panel-default">
           <div class="panel-body">
             <%= link_to new_topic_path, class: "btn btn-block btn-primary" do %>
-              <% fa_icon "upload fw lg", text: "新規投稿" %>
+              <% fa_icon "upload fw", text: "新規投稿" %>
             <% end %>
           </div>
         </div>
@@ -50,10 +50,10 @@
               </div>
               <div class="edit-topic-links pull-right">
                 <%= link_to edit_topic_path(topic.id) do %>
-                  <% fa_icon("pencil-square-o fw lg") %>
+                  <% fa_icon("pencil-square-o fw") %>
                 <% end %>
                 <%= link_to topic_path(topic.id), method: :delete, data: { confirm: 'トピックを削除してもいいですか？' } do %>
-                  <% fa_icon("trash-o fw lg") %>
+                  <% fa_icon("trash-o fw") %>
                 <% end %>
               </div>
               <div>
@@ -65,7 +65,7 @@
               <hr>
               <div class="comments-link">
                 <%= link_to topic_path(topic) do %>
-                  <% fa_icon("comment-o fw lg", text: "コメントする") %>
+                  <% fa_icon("comment-o fw", text: "コメントする") %>
                 <% end %>
               </div>
             </div>
@@ -95,14 +95,30 @@
         <div class="user-home-right panel panel-default">
           <div class="panel-body">
             <%= link_to users_path, class: "btn btn-block btn-primary" do %>
-              <% fa_icon "users fw lg", text: "ユーザー" %>
+              <% fa_icon "users fw", text: "ユーザー" %>
             <% end %>
+          </div>
+        </div>
+        <div class="friend-requests-list panel panel-default">
+          <div class="panel-body">
+            <div>
+              <strong>友達リクエスト <span class="badge"><%= @friend_request_user.length %></span></strong>
+              <hr>
+              <% @friend_request_user.each do |friend_request_user| %>
+                <div class="friend-requests-list-item">
+                  <%= link_to user_path(friend_request_user.id) do %>
+                    <%= profile_img(friend_request_user) %>
+                    <strong><%= friend_request_user.name %></strong>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="friends-list panel panel-default">
           <div class="panel-body">
             <div>
-              <strong>友達：<%= @friends.length %>人</strong>
+              <strong>友達 <span class="badge"><%= @friends.length %></span></strong>
               <hr>
               <% @friends.each do |friend| %>
                 <div class="friends-list-item">

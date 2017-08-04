@@ -94,3 +94,19 @@
     }
   }
 }
+
+.friend-requests-list {
+  .friend-requests-list-item {
+    img {
+      width: 100%;
+    }
+    margin-bottom: 10px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
